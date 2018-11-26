@@ -17,10 +17,14 @@ class Cadastro_sucesso < Appium::Driver
     @name = "form_first_name"
     @lastName = "form_last_name"
     @birthday = "form_birthday"
+    @findYear = "date_picker_header_year"
+    @previousMonth = "prev"
+    @mouthView = "month_view"
+    @birthdayBtnDate = "button1"
     @btnSave = "register_button"
     @srollView = "register_fragment"
   end
-
+# ================================= METHODS ======================================
   def access_enter
     find_element(class: @menuButton).click
     text(@btnEntrar).click
@@ -47,6 +51,23 @@ class Cadastro_sucesso < Appium::Driver
 
     scroll_to_exact("Sobrenome")
     id(@lastName).click
+
+    id(@birthday).click
+    id(@findYear).click
+    scroll_to_exact(1996).click
+
+    i =  @mouthView
+    for i in 0..7
+      if i != "March 1996" then
+        id(@previousMonth).click
+        break
+      end
+    end
+  
+    id(@birthdayBtnDate).click 
+    
+    id(@btnSave).click
+    
 
   end
 
