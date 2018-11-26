@@ -1,0 +1,26 @@
+
+[1mFrom:[0m C:/Users/Inmetrics.LP1439/Desktop/mobile/kanui/features/screens/cadastro_sucesso_screen.rb @ line 49 Cadastro_sucesso#insert_records:
+
+    [1;34m29[0m: [32mdef[0m [1;34minsert_records[0m
+    [1;34m30[0m:   id(@btnCadastrar).click
+    [1;34m31[0m: 
+    [1;34m32[0m:   id(@email).click
+    [1;34m33[0m:   id(@email).send_key @emailInsert
+    [1;34m34[0m: 
+    [1;34m35[0m:   id(@password).click
+    [1;34m36[0m:   id(@password).send_key @password_num
+    [1;34m37[0m: 
+    [1;34m38[0m:   id(@confirm_pass).click
+    [1;34m39[0m:   id(@confirm_pass).send_key @confirm_pass_num
+    [1;34m40[0m: 
+    [1;34m41[0m:   id(@cpf).click
+    [1;34m42[0m:   id(@cpf).send_key @cpf_num
+    [1;34m43[0m: 
+    [1;34m44[0m:   id(@name).click
+    [1;34m45[0m:   id(@name).send_key @nome
+    [1;34m46[0m: 
+    [1;34m47[0m: 
+    [1;34m48[0m:   [1;34m1[0m.times {[1;34;4mAppium[0m::[1;34;4mTouchAction[0m.new.swipe([35mstart_x[0m: [1;35m0.5[0m, [35mstart_y[0m: [1;35m0.2[0m, [35mend_x[0m: [1;35m0.5[0m, [35mend_y[0m: [1;35m0.5[0m, [35mduration[0m:[1;34m600[0m).perform}
+ => [1;34m49[0m:   binding.pry
+    [1;34m50[0m: [32mend[0m
+
