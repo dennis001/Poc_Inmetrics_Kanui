@@ -25,7 +25,7 @@ class Cadastro_sucesso < Appium::Driver
     @birthdayBtnDate = "button1"
     @btnSave = "register_button"
     @srollView = "register_fragment"
-    @wellcome = "banner_image"
+    @wellcome = "Seja bem vindo"
   end
 
   # ================================= METHODS ======================================
@@ -78,14 +78,7 @@ class Cadastro_sucesso < Appium::Driver
   def valid_cadastro
     id(@birthdayBtnDate).click
     id(@btnSave).click
-    result = ''
-    wait {result = find_element(id: @wellcome).text}
-    if result = "Seja bem vindo,"
-      puts result
-    else
-      fail "elemento não encontrado"
-    end
-    return result
+    text(@wellcome).click
   end
 
 end
