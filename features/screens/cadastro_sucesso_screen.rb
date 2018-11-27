@@ -25,11 +25,7 @@ class Cadastro_sucesso < Appium::Driver
     @birthdayBtnDate = "button1"
     @btnSave = "register_button"
     @srollView = "register_fragment"
-    @wellcome = "Seja bem vindo,"
-  end
-
-  def is_element_exists?
-    element_exists? @mappings["nome_do_elemento"]["value"], @mappings["nome_do_elemento"]["tipo_de_busca"]
+    @wellcome = "banner_image"
   end
 
   # ================================= METHODS ======================================
@@ -70,19 +66,26 @@ class Cadastro_sucesso < Appium::Driver
 
     result = ''
     wait {result = find_element(id: @topDate).text}
-      if result = "Sáb, 16 de mar"
-        puts result
-      else
-        puts "data nao encontrada"
-      end
+    if result = "Sáb, 16 de mar"
+      puts result
+    else
+      puts "data nao encontrada"
+    end
     return result
 
   end
-
+  
   def valid_cadastro
     id(@birthdayBtnDate).click
     id(@btnSave).click
-    text(@wellcome).is_element_exists
+    result = ''
+    wait {find_element(id: @wellcome).text}
+    if result = "Seja bem vindo,"
+      puts result
+    else
+      puts "valor não encontrado"
+    end
+    return result
   end
 
 end
