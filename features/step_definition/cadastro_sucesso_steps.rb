@@ -4,15 +4,17 @@ Dado("que estou na home do aplicativo") do
 end
 
 Quando("toco no botão de login \/cadastro") do
-  @sucesso = Cadastro_sucesso.new
-  @sucesso.access_enter
+  @cadastro = Cadastro_sucesso.new
+  @cadastro.access_enter
 
 end
 
 Quando("insiro meus dados") do
-  @sucesso.insert_records
+  @cadastro.insert_records
+  @cadastro.insert_birthday
+  @cadastro.day_of_birthday
 end
 
 Então("valido meu cadastro") do
-  pending # Write code here that turns the phrase above into concrete actions
+  @cadastro.valid_cadastro
 end
