@@ -15,6 +15,7 @@ class Cadastro_sucesso < Appium::Driver
     @cpf_num = Faker::CPF.numeric
     @nome = Faker::Simpsons.character
     @name = "form_first_name"
+    @lastNameText = Faker::Name.last_name
     @lastName = "form_last_name"
     @birthday = "form_birthday"
     @findYear = "date_picker_header_year"
@@ -38,12 +39,14 @@ class Cadastro_sucesso < Appium::Driver
   def insert_records
     id(@btnCadastrar).click
     id(@email).send_key @emailInsert
+    puts @emailInsert
     id(@password).send_key @password_num
+    puts @password_num
     id(@confirm_pass).send_key @confirm_pass_num
     id(@cpf).send_key @cpf_num
     id(@name).send_key @nome
     scroll_to_exact("Sobrenome")
-    id(@lastName).send_key @nome
+    id(@lastName).send_key @lastNameText
   end
 
   def insert_birthday
@@ -78,7 +81,13 @@ class Cadastro_sucesso < Appium::Driver
   def valid_cadastro
     id(@birthdayBtnDate).click
     id(@btnSave).click
-    text(@wellcome).click
+    result = ''
+    wait {result = text(@wellcome).text}
+    if result = "Seja bem vindo"
+      puts result
+    else
+      fail "elemento nao encontrado."
+    end
   end
 
 end
