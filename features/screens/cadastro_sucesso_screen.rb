@@ -36,6 +36,10 @@ class Cadastro_sucesso < Appium::Driver
     id(@btnCadastrar).click
   end
 
+  def json_response
+    ActiveSupport::JSON.decode @response.body
+  end
+
   def insert_records
     id(@btnCadastrar).click
     id(@email).send_key @emailInsert

@@ -1,1 +1,1 @@
-default: --no-source --color --format pretty
+default: ENVIRONMENT=homologacao DATA_POOL="HOMOLOG"
