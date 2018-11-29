@@ -6,6 +6,7 @@ require 'selenium-webdriver'
 require 'cpf_faker'
 require 'httparty'
 
+
 def wait_for
     Selenium::WebDriver::Wait.new(:timeout => 10).until { yield }
 end

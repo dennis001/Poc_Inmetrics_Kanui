@@ -2,7 +2,7 @@ require_relative 'suport_objetos'
 
 
    class Login_sucesso < Appium::Driver
-    include SuporteObjetos    
+    include SuporteObjetos
 
     def initialize
       @email = 'form_login_email'
@@ -11,17 +11,16 @@ require_relative 'suport_objetos'
     end
 
     def preencher_email(email)
-      id(@email).send_key email
+      id(@email).send_key :email
     end
 
     def preencher_senha(senha)
-      id(@senha).send_key senha
+      id(@senha).send_key :senha
     end
 
     def preencher_credenciais(credenciais)
-      @document = busca_datapool(credenciais)
-      preencher_email @document[:email]
-      preencher_senha @document[:senha]
+      preencher_email [:email]
+      preencher_senha [:senha]
 
     end
 
