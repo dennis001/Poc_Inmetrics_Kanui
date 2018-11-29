@@ -21,8 +21,6 @@ def caps
 }}
 end
 
-
-
 Appium::Driver.new(caps, true)
 Appium.promote_appium_methods Object
 
