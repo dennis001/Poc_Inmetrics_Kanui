@@ -5,8 +5,8 @@ Dado(/^que eu veja tela de menu do aplicativo$/) do
 end
 
 Quando(/^utilizo um "([^"]*)"$/) do |credenciais|
-  @login = Login_sucesso.new
-  @login.logar(credenciais)
+@login = Login_sucesso.new
+@login.logar(@credenciais)
 end
 
 Entao(/^vejo a tela inicial do aplicativo$/) do

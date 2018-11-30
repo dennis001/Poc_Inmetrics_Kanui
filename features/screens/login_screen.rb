@@ -21,9 +21,9 @@ require_relative 'suport_objetos'
     end
 
     def preencher_credenciais(credenciais)
-      @dados = busca_datapool(credenciais)
-      preencher_email @dados[:email]
-      preencher_senha @dados[:senha]
+      @credenciais = JSON.parse(File.read('./support/default/credenciais.json'))
+      preencher_email @credenciais[:email]
+      preencher_senha @credenciais[:senha]
 
     end
 
