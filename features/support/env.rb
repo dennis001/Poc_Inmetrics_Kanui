@@ -5,6 +5,9 @@ require 'faker'
 require 'selenium-webdriver'
 require 'cpf_faker'
 require 'httparty'
+require 'cucumber'
+require 'capybara/cucumber'
+require 'site_prism'
 
 
 def wait_for

@@ -10,17 +10,20 @@ require_relative 'suport_objetos'
       @btnEnter = 'regist_login_user_button_enter'
     end
 
+
+
     def preencher_email(email)
-      id(@email).send_key :email
+      id(@email).send_key (email)
     end
 
     def preencher_senha(senha)
-      id(@senha).send_key :senha
+      id(@senha).send_key (senha)
     end
 
     def preencher_credenciais(credenciais)
-      preencher_email [:email]
-      preencher_senha [:senha]
+      @dados = busca_datapool(credenciais)
+      preencher_email @dados[:email]
+      preencher_senha @dados[:senha]
 
     end
 
