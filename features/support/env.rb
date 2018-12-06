@@ -8,6 +8,7 @@ require 'httparty'
 require 'cucumber'
 require 'capybara/cucumber'
 require 'site_prism'
+require 'json'
 
 
 def wait_for

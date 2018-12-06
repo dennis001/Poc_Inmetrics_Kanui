@@ -87,7 +87,7 @@ class Cadastro_sucesso < Appium::Driver
     id(@btnSave).click
     result = ''
     wait {result = text(@wellcome).text}
-    if result = "Seja bem vindo"
+    if result == "Seja bem vindo"
       puts result
     else
       fail "elemento nao encontrado."
