@@ -1,6 +1,12 @@
 {
    "login_valido":{
       "email":"georgianne@fisherlakin.com",
-      "senha":"44501107"
+      "senha":"44501107",
+      "nome":"Lindsay Naegle Emmerich"
+   },
+   "login_invalido":{
+      "email":"georgianne@fisherlakin.com",
+      "senha":"56486159",
+      "nome":"Lindsay Naegle Emmerich"
    }
 }

@@ -1,43 +1,33 @@
 require_relative 'suport_objetos'
 
 
-class Login_sucesso < Appium::Driver
+class Login < Appium::Driver
   include SuporteObjetos
 
   def initialize
+    #Credenciais
     @email = 'form_login_email'
     @senha = 'form_login_password'
+    #botões
     @btnEnter = 'regist_login_user_button_enter'
+    @hometask = 'list_of_titles'
   end
-
-
 
   def preencher_email(email)
     id(@email).send_key (email)
-    result = ''
-    wait {result = text(email).text}
-    if result =! (email)
-      fail "email não preenchido"
-    end
   end
 
   def preencher_senha(senha)
     id(@senha).send_key (senha)
-    result = ''
-    wait {result = text(senha).text}
-    if result =! (senha)
-      fail "senha não preenchida"
-    end
   end
 
-  def preencher_credenciais(credenciais)
-    @credenciais = JSON.parse!(File.read('./features/support/default/credenciais.json'))
-    preencher_email @credenciais["email"] => 'georgianne@fisherlakin.com'
-    preencher_senha @credenciais["senha"]
+  def logar_sucesso(credenciais)
+    preencher_credenciais_validas(credenciais)
+    id(@btnEnter).click
   end
 
-  def logar(credenciais)
-    preencher_credenciais(credenciais)
+  def logar_com_falha(credenciais)
+    preencher_credenciais_invalidas(credenciais)
     id(@btnEnter).click
   end
 

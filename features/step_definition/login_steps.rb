@@ -4,11 +4,20 @@ Dado(/^que eu veja tela de menu do aplicativo$/) do
   @home.menutoobar
 end
 
-Quando(/^utilizo um "([^"]*)"$/) do |credenciais|
-@login = Login_sucesso.new
-@login.logar(@credenciais)
+Quando(/^utilizo um "([^"]*)"$/) do |login_valido|
+@login = Login.new
+@login.logar_sucesso(login_valido)
 end
 
 Entao(/^vejo a tela inicial do aplicativo$/) do
+  @home.homeLogada
+end
+
+Quando("digito meus dados incorretamente com meu {string}") do |login_invalido|
+  @login = Login.new
+  @login.logar_com_falha(login_invalido)
+end
+
+Entao("vejo o pop-up de erro de login") do
   pending # Write code here that turns the phrase above into concrete actions
 end
