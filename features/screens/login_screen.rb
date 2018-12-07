@@ -11,6 +11,8 @@ class Login < Appium::Driver
     #botões
     @btnEnter = 'regist_login_user_button_enter'
     @hometask = 'list_of_titles'
+    #mensagens
+    @erroLogin = 'dialog_info_text'
   end
 
   def preencher_email(email)
@@ -29,6 +31,11 @@ class Login < Appium::Driver
   def logar_com_falha(credenciais)
     preencher_credenciais_invalidas(credenciais)
     id(@btnEnter).click
+  end
+
+  def mensagenErro
+    driver.manage.timeouts.implicit_wait = 60
+    find_element(id: @erroLogin)
   end
 
 end

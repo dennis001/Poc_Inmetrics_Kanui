@@ -18,6 +18,7 @@ Quando("digito meus dados incorretamente com meu {string}") do |login_invalido|
   @login.logar_com_falha(login_invalido)
 end
 
-Entao("vejo o pop-up de erro de login") do
-  pending # Write code here that turns the phrase above into concrete actions
+Entao("vejo o pop-up de {string} de login") do |erro|
+  erro = @login
+  expect(erro.mensagenErro).to eq(erro)
 end
