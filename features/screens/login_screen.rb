@@ -33,9 +33,8 @@ class Login < Appium::Driver
     id(@btnEnter).click
   end
 
-  def mensagenErro
-    driver.manage.timeouts.implicit_wait = 60
-    find_element(id: @erroLogin)
+  def mensagenErro(erro)
+    find_element(:id, @erroLogin).to eq(erro)
   end
 
 end

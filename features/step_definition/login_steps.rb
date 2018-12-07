@@ -19,6 +19,5 @@ Quando("digito meus dados incorretamente com meu {string}") do |login_invalido|
 end
 
 Entao("vejo o pop-up de {string} de login") do |erro|
-  erro = @login
-  expect(erro.mensagenErro).to eq(erro)
+  expect(Login.new.mensagenErro).to eq(erro)
 end
