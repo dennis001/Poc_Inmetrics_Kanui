@@ -37,7 +37,7 @@ class Login < Appium::Driver
       find_element(xpath: "//android.widget.TextView[2]")
 
       result = ''
-      wait {result = find_element(xpath: "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TextView[2]").text}
+      wait {result = find_element(xpath: "//android.widget").text}
       if result == "Falha no login Login ou senha incorretos"
         puts result
       else
