@@ -15,10 +15,10 @@ Funcionalidade:
  Entao vejo a tela inicial do aplicativo
 
  @login_invalido @wip
- Esquema do Cenario: Login sem sucesso no aplicativo utilizando email e senha invalidos/ nao existentes.
+ Cenario: Login sem sucesso no aplicativo utilizando email e senha invalidos/ nao existentes.
  Quando digito meus dados incorretamente com meu "login invalido"
- Entao vejo o pop-up de "<erro>" de login
+ Entao vejo o pop-up de erro de login
 
-      Exemplos:
-      |                 erro                   |
-      |Falha no login Login ou senha incorretos|
+#      Exemplos:
+#      |                 erro                   |
+#      |Falha no login Login ou senha incorretos|
