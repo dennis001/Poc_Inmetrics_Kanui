@@ -15,6 +15,7 @@ class Login < Appium::Driver
     @erroLogin = 'dialog_info_text'
   end
 
+  # ================================= METHODS ======================================
   def preencher_email(email)
     id(@email).send_key (email)
   end
@@ -35,14 +36,15 @@ class Login < Appium::Driver
 
   def mensagenErro
 
-      result = ''
-      wait {result = find_element(:id, @erroLogin).text}
-      if result == "Falha no login Login ou senha incorretos"
-        puts result
-      else
-        find_element(xpath: "//android.widget.TextView[2]")
-      end
-      return result
+    result = ''
+    wait {result = find_element(:id, @erroLogin).text}
+    if result == "Falha no login Login ou senha incorretos"
+      puts result
+    else
+      element = find_element :id, @erroLogin
+      element.text
+    end
+    return result
 
   end
 

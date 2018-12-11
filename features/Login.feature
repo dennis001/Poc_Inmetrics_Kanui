@@ -14,11 +14,7 @@ Funcionalidade:
  Quando utilizo um "login valido"
  Entao vejo a tela inicial do aplicativo
 
- @login_invalido @wip
+ @login_invalido
  Cenario: Login sem sucesso no aplicativo utilizando email e senha invalidos/ nao existentes.
  Quando digito meus dados incorretamente com meu "login invalido"
  Entao vejo o pop-up de erro de login
-
-#      Exemplos:
-#      |                 erro                   |
-#      |Falha no login Login ou senha incorretos|
