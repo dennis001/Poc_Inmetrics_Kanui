@@ -25,5 +25,6 @@ Entao("vejo o pop-up de {string} de login") do |erro|
 end
 =end
 Entao("vejo o pop-up de erro de login") do
+  @login = Login.new
   @login.mensagenErro
 end

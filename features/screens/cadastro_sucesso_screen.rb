@@ -51,6 +51,12 @@ class Cadastro_sucesso < Appium::Driver
     id(@name).send_key @nome
     scroll_to_exact("Sobrenome")
     id(@lastName).send_key @lastNameText
+=begin
+    file = File.read('./features/support/default/credenciais.json')
+    @credenciais =  JSON.generate(file)
+    @credenciais.send_key  @emailInsert["login_valido"]["email"]
+    @credenciais.send_key @password_num["login_valido"]["senha"]
+=end
   end
 
   def insert_birthday
@@ -59,11 +65,11 @@ class Cadastro_sucesso < Appium::Driver
     scroll_to_exact(1996).click
 
     i =  @mouthView
-    for i in 0..7
+    for i in 0..8
       if i != "March 1996" then
         id(@previousMonth).click
       else
-        puts 'data nao encontrada'
+        fail 'data nao encontrada'
       end
     end
   end
@@ -87,7 +93,7 @@ class Cadastro_sucesso < Appium::Driver
     id(@btnSave).click
     result = ''
     wait {result = text(@wellcome).text}
-    if result == "Seja bem vindo"
+    if result = "Seja bem vindo"
       puts result
     else
       fail "elemento nao encontrado."

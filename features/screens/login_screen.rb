@@ -34,14 +34,13 @@ class Login < Appium::Driver
   end
 
   def mensagenErro
-      find_element(xpath: "//android.widget.TextView[2]")
 
       result = ''
-      wait {result = find_element(xpath: "//android.widget").text}
+      wait {result = find_element(:id, @erroLogin).text}
       if result == "Falha no login Login ou senha incorretos"
         puts result
       else
-        fail "data nao encontrada"
+        find_element(xpath: "//android.widget.TextView[2]")
       end
       return result
 
