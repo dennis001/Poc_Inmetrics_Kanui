@@ -43,20 +43,21 @@ class Cadastro_sucesso < Appium::Driver
   def insert_records
     id(@btnCadastrar).click
     id(@email).send_key @emailInsert
-    puts @emailInsert
+    email = @emailInsert
     id(@password).send_key @password_num
-    puts @password_num
+    senha = @password_num
     id(@confirm_pass).send_key @confirm_pass_num
     id(@cpf).send_key @cpf_num
     id(@name).send_key @nome
     scroll_to_exact("Sobrenome")
     id(@lastName).send_key @lastNameText
-=begin
+
     file = File.read('./features/support/default/credenciais.json')
-    @credenciais =  JSON.generate(file)
-    @credenciais.send_key  @emailInsert["login_valido"]["email"]
-    @credenciais.send_key @password_num["login_valido"]["senha"]
-=end
+    login_valido = {:login_valido => {:email => @emailInsert, :senha => @password_num}}
+    json = JSON.generate(login_valido)
+    puts json
+    json.(file)
+
   end
 
   def insert_birthday
