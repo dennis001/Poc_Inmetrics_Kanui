@@ -1,4 +1,8 @@
 class Cadastro_sucesso < Appium::Driver
+#  include HTTParty
+#
+#  base_uri ENVIRONMENT['api']
+#  format :json
 
   # ================================= SCREEN ======================================
   def initialize
@@ -49,18 +53,22 @@ class Cadastro_sucesso < Appium::Driver
     id(@confirm_pass).send_key @confirm_pass_num
     id(@cpf).send_key @cpf_num
     id(@name).send_key @nome
+    nome = @nome
     scroll_to_exact("Sobrenome")
     id(@lastName).send_key @lastNameText
 
     puts email
     puts senha
-
-    file = File.read('./features/support/default/credenciais.json')
+    puts nome
+=begin
+    file = $FILE.gsub("#EMAIL", @emailInsert.to_s).gsub("#SENHA", @password_num.to_s).gsub("#NOME", @nome.to_s)
+    puts file
+=end
     login_valido = {:login_valido => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
-    json = JSON.generate(login_valido)
-    json.merge!(file)
-    puts json
-    puts json.(file)
+    login_valido = JSON.generate(login_valido)
+    File.read('./features/support/default/credenciais.json') (File.join(login_valido))
+    #login_valido.merge!(file)
+    puts login_valido
 
 
   end

@@ -11,6 +11,12 @@ require 'site_prism'
 require 'json'
 
 
+#ENV['ENV'] = 'prod' unless ENV.key?'ENV'
+#
+$FILE = JSON.generate(File.read("./features/support/default/credenciais.json"))
+#
+#MASSA = YAML.load_file("./features/support/default/credenciais.yml")[ENV['ENV']]
+
 def wait_for
     Selenium::WebDriver::Wait.new(:timeout => 10).until { yield }
 end
