@@ -5,7 +5,7 @@ class Cadastro_sucesso < Appium::Driver
     @menuButton = "android.widget.ImageButton"
     @btnEntrar = "Entrar"
     @btnCadastrar = "form_register_option"
-    @emailInsert = Faker::Internet.email(@nome)
+    @emailInsert = Faker::Internet.email
     @email = "form_email"
     @password_num = Faker::Number.number(8)
     @password = "form_password"
@@ -52,11 +52,16 @@ class Cadastro_sucesso < Appium::Driver
     scroll_to_exact("Sobrenome")
     id(@lastName).send_key @lastNameText
 
+    puts email
+    puts senha
+
     file = File.read('./features/support/default/credenciais.json')
-    login_valido = {:login_valido => {:email => @emailInsert, :senha => @password_num}}
+    login_valido = {:login_valido => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
     json = JSON.generate(login_valido)
+    json.merge!(file)
     puts json
-    json.(file)
+    puts json.(file)
+
 
   end
 
