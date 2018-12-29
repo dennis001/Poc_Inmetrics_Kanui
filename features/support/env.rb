@@ -9,6 +9,8 @@ require 'cucumber'
 require 'capybara/cucumber'
 require 'site_prism'
 require 'json'
+require 'json/ext'
+require 'json/pure'
 
 
 #ENV['ENV'] = 'prod' unless ENV.key?'ENV'

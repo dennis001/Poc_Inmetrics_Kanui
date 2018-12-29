@@ -1,19 +1,17 @@
 {
   "login_valido":{
-    "email":"georgianne@fisherlakin.com",
-    "senha":"44501107",
-    "nome":"Lindsay Naegle Emmerich"
+    "email": "georgianne@fisherlakin.com",
+    "senha": "44501107",
+    "nome": "Lindsay Naegle Emmerich"
+  },
+  "login_invalido":{
+    "email": "georgianne@lakin.com",
+    "senha": "56486159",
+    "nome": "Lindsay Naegle Emmerich"
+  },
+  "login": {
+    "email": "neville@hayesrolfson.io",
+    "senha": "87150292",
+    "nome": "Helen Lovejoy"
   }
-  {
-    "login_valido":{
-      "email":"#EMAIL",
-      "senha":"#SENHA",
-      "nome":"#NOME"
-    }
-  {
-    "login_invalido":{
-      "email":"georgianne@lakin.com",
-      "senha":"56486159",
-      "nome":"Lindsay Naegle Emmerich"
-    }
-  }
+}

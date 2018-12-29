@@ -60,16 +60,11 @@ class Cadastro_sucesso < Appium::Driver
     puts email
     puts senha
     puts nome
-=begin
-    file = $FILE.gsub("#EMAIL", @emailInsert.to_s).gsub("#SENHA", @password_num.to_s).gsub("#NOME", @nome.to_s)
-    puts file
-=end
-    login_valido = {:login_valido => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
-    login_valido = JSON.generate(login_valido)
-    File.read('./features/support/default/credenciais.json') (File.join(login_valido))
-    #login_valido.merge!(file)
-    puts login_valido
 
+    login_valido = File.read('./features/support/default/credenciais.json')
+    login_valido = {:login => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
+    login_valido = File.read('./features/support/default/credenciais.json') << JSON.pretty_generate(login_valido)
+    puts login_valido
 
   end
 
