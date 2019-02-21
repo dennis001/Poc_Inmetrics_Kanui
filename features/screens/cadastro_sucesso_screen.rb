@@ -1,10 +1,6 @@
 class Cadastro_sucesso < Appium::Driver
-#  include HTTParty
-#
-#  base_uri ENVIRONMENT['api']
-#  format :json
 
-  # ================================= SCREEN ======================================
+# ================================= SCREEN ======================================
   def initialize
     @menuButton = "android.widget.ImageButton"
     @btnEntrar = "Entrar"
@@ -33,8 +29,7 @@ class Cadastro_sucesso < Appium::Driver
     @srollView = "register_fragment"
     @wellcome = "Seja bem vindo"
   end
-
-  # ================================= METHODS ======================================
+# ================================= METHODS ======================================
   def access_enter
     find_element(class: @menuButton).click
     text(@btnEntrar).click
