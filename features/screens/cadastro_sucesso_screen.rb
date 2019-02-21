@@ -24,6 +24,7 @@ class Cadastro_sucesso < Appium::Driver
     @birthday = "form_birthday"
     @findYear = "date_picker_header_year"
     @previousMonth = "prev"
+    @nextMonth = "next"
     @mouthView = "month_view"
     @dayOfDate = 16
     @topDate = "date_picker_header_date"
@@ -61,10 +62,11 @@ class Cadastro_sucesso < Appium::Driver
     puts senha
     puts nome
 
+
     login_valido = File.read('./features/support/default/credenciais.json')
     login_valido = {:login => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
     login_valido = File.read('./features/support/default/credenciais.json') << JSON.pretty_generate(login_valido)
-    puts login_valido
+    #puts login_valido
 
   end
 
@@ -72,18 +74,19 @@ class Cadastro_sucesso < Appium::Driver
     id(@birthday).click
     id(@findYear).click
     scroll_to_exact(1996).click
-
-    i =  @mouthView
-    for i in 0..8
-      if i != "March 1996" then
-        id(@previousMonth).click
-      else
-        fail 'data nao encontrada'
-      end
-    end
   end
 
   def day_of_birthday
+
+    i =  @mouthView
+      if i <= "March 1996" then
+        id(@previousMonth).click
+      elsif i >= "March 1996" then
+        id(@nextMonth).click
+      else i == "March 1996"
+        print "data encontrada"
+      end
+
     find_element(id: @mouthView).find_element(xpath: "//android.view.View[@content-desc='15 março 1996']").click
 
     result = ''
