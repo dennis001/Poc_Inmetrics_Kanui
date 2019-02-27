@@ -22,7 +22,7 @@ class Cadastro_sucesso < Appium::Driver
     @previousMonth = "prev"
     @nextMonth = "next"
     @mouthView = "month_view"
-    @dayOfDate = 16
+    @dayOfDate = "16"
     @topDate = "date_picker_header_date"
     @birthdayBtnDate = "button1"
     @btnSave = "register_button"
@@ -43,20 +43,26 @@ class Cadastro_sucesso < Appium::Driver
   def insert_records
     id(@btnCadastrar).click
     id(@email).send_key @emailInsert
+    #hide_keyboard
     email = @emailInsert
+
     id(@password).send_key @password_num
     senha = @password_num
+    #hide_keyboard
+
     id(@confirm_pass).send_key @confirm_pass_num
+    #hide_keyboard
+
     id(@cpf).send_key @cpf_num
+    hide_keyboard
+
     id(@name).send_key @nome
     nome = @nome
+    #hide_keyboard
+
     scroll_to_exact("Sobrenome")
     id(@lastName).send_key @lastNameText
-
-    puts email
-    puts senha
-    puts nome
-
+    #hide_keyboard
 
     login_valido = File.read('./features/support/default/credenciais.json')
     login_valido = {:login => {:email => @emailInsert, :senha => @password_num, :nome => @nome}}
@@ -73,23 +79,32 @@ class Cadastro_sucesso < Appium::Driver
 
   def day_of_birthday
 
-    i =  @mouthView
-      if i <= "March 1996" then
-        id(@previousMonth).click
-      elsif i >= "March 1996" then
+
+
+    i =  @topDate
+      if i < "sáb, 16 de mar"
         id(@nextMonth).click
-      else i == "March 1996"
-        print "data encontrada"
+        i == "sáb, 16 de mar"
+      elsif i > "sáb, 16 de mar"
+        id(@previousMonth).click
+      else i == "sáb, 16 de mar"
+        puts "data encontrada"
       end
 
-    find_element(id: @mouthView).find_element(xpath: "//android.view.View[@content-desc='15 março 1996']").click
+      time = Time.new
+
+      if time != 16
+        find_elements(class: "android.view.View")[16].click
+      else time == 16
+        puts time.day
+      end
 
     result = ''
     wait {result = find_element(id: @topDate).text}
-    if result == "Sáb, 16 de mar"
+    if result == "sáb, 16 de mar"
       puts result
     else
-      fail "data nao encontrada"
+      fail "data nao é igual a sáb, 16 de mar"
     end
     return result
 
